@@ -24,7 +24,7 @@ app.get("/books/:id", (req, res)=>{
 
 app.post("/books", (req, res)=>{
     const nuevosLibro = {
-        id: bdBooks.length + 1,
+        id: parseInt(bdBooks.length + 1),
         title: req.body.title,
         author: req.body.author,
         year: parseInt(req.body.year)
@@ -43,7 +43,7 @@ app.put("/books/:id", (req, res)=>{
     if(editarLibro) {
         editarLibro.title = req.body.title;
         editarLibro.author = req.body.author;
-        editarLibro.year = req.body.year;
+        editarLibro.year = parseInt(req.body.year);
         res.json({mensaje: "Se editó el libro"})
     } else {
         res.json({mensaje: "Libro no encontrado"})
